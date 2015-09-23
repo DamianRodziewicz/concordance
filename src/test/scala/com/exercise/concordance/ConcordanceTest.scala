@@ -2,7 +2,7 @@ package com.exercise.concordance
 
 import org.scalatest._
 
-import com.exercise.concordance.fixtures.A
+import fixtures.A
 
 class GreeterTest extends FlatSpec with Matchers {
 
