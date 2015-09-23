@@ -20,4 +20,14 @@ class Concordance() {
   def getSentenceIndexes(word: String): Option[List[Int]] = {
     this.wordsMap.get(word) map { _.toList }
   }
+
+  def printResults() = {
+    val keys = this.wordsMap.keys.toList.sorted
+    keys foreach { key => {
+        val indexes = this.getSentenceIndexes(key).get
+        val indexesString = indexes.mkString(",")
+        println(s"${key} {${indexes.length}:${indexesString}} ")
+      }
+    }
+  }
 }

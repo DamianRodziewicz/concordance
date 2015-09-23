@@ -4,7 +4,7 @@ import org.scalatest._
 
 import fixtures.A
 
-class GreeterTest extends FlatSpec with Matchers {
+class ConcordanceTest extends FlatSpec with Matchers {
 
   "A Concordance" should "return None for a word that it does not contain" in {
     // Given

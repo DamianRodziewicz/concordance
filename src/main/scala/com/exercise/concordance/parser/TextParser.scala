@@ -9,12 +9,16 @@ class TextParser() extends ITextParser {
 
   def getSentences(text: String): List[Sentence] = {
     val rawSentences = text.split(RegExp.SentenceEndRegExp)
-    var cleanedSentences = rawSentences map cleanText
-    var cleanedWordLists = cleanedSentences map (_.split(RegExp.Whitespace))
+    val cleanedSentences = rawSentences map cleanText
+    val cleanedWordLists = cleanedSentences map (_.split(RegExp.Whitespace) filter isWord)
     cleanedWordLists map { words => Sentence(words.toList) } toList
   }
 
   def cleanText(sentence: String): String = {
     sentence.trim().dropRight(1).toLowerCase().replaceAll(RegExp.UnnecessaryChars, "")
+  }
+
+  def isWord(word: String): Boolean = {
+    !word.replaceAll("[^a-zA-Z]", "").isEmpty()
   }
 }
